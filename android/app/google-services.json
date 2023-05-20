@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "80490632081",
+    "project_id": "mobuyg-96bc9",
+    "storage_bucket": "mobuyg-96bc9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80490632081:android:c499a72dda1a620d218030",
+        "android_client_info": {
+          "package_name": "com.example.mobuyg1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80490632081-sg45ifdnslksr686rdhuntk9s41h4n5j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtNdaACcNv5HzNhPEvedGZfODMv9-N4C8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80490632081-sg45ifdnslksr686rdhuntk9s41h4n5j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
