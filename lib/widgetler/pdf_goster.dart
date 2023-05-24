@@ -30,6 +30,7 @@ class _PdfGosterState extends State<PdfGoster> with WidgetsBindingObserver {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.baslik),
+        backgroundColor: const Color.fromARGB(255, 92, 53, 53),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.share),
@@ -42,7 +43,7 @@ class _PdfGosterState extends State<PdfGoster> with WidgetsBindingObserver {
           PDFView(
             filePath: widget.path,
             enableSwipe: true,
-            swipeHorizontal: true,
+            swipeHorizontal: false,
             autoSpacing: false,
             pageFling: true,
             pageSnap: true,
@@ -91,21 +92,6 @@ class _PdfGosterState extends State<PdfGoster> with WidgetsBindingObserver {
                   child: Text(errorMessage),
                 )
         ],
-      ),
-      floatingActionButton: FutureBuilder<PDFViewController>(
-        future: _controller.future,
-        builder: (context, AsyncSnapshot<PDFViewController> snapshot) {
-          if (snapshot.hasData) {
-            return FloatingActionButton.extended(
-              label: Text("Go to ${pages! ~/ 2}"),
-              onPressed: () async {
-                await snapshot.data!.setPage(pages! ~/ 2);
-              },
-            );
-          }
-
-          return Container();
-        },
       ),
     );
   }

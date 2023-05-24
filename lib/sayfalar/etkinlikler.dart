@@ -40,40 +40,41 @@ class _EtkinliklerState extends State<Etkinlikler> {
         backgroundColor: const Color.fromARGB(255, 71, 71, 71),
       ),
       backgroundColor: const Color.fromARGB(255, 207, 206, 205),
-      body: Column(
-        children: [
-          TextButton(
-            onPressed: () {
-              fromAsset('assets/pdf/1.pdf', '1.pdf').then((file) {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => PdfGoster(
-                      path: file.path,
-                      baslik: "1.Hafta Etkinlikler",
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(5),
+        child: Column(
+          children: [
+            for (int i = 1; i < 15; i++)
+              ElevatedButton(
+                style: const ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll(Colors.blueGrey),
+                ),
+                onPressed: () {
+                  fromAsset('assets/pdf/$i.pdf', '$i.pdf').then((file) {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => PdfGoster(
+                          path: file.path,
+                          baslik: "$i.Hafta Etkinlikler",
+                        ),
+                      ),
+                    );
+                  });
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "$i.Hafta Etkinlikler",
+                      style: const TextStyle(
+                        fontSize: 20,
+                      ),
                     ),
-                  ),
-                );
-              });
-            },
-            child: const Text("1.Hafta Etkinlikler"),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: const Text("2.Hafta Etkinlikler"),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: const Text("3.Hafta Etkinlikler"),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: const Text("4.Hafta Etkinlikler"),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: const Text("5.Hafta Etkinlikler"),
-          )
-        ],
+                  ],
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
