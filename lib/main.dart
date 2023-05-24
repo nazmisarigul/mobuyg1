@@ -5,6 +5,7 @@ import 'package:mobuyg1/sayfalar/degerlendirme.dart';
 import 'package:mobuyg1/sayfalar/etkinlikler.dart';
 import 'package:mobuyg1/sayfalar/iletisim.dart';
 import 'package:mobuyg1/sayfalar/kullanici_giris.dart';
+import 'package:mobuyg1/sayfalar/takvim.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +17,7 @@ void main() async {
       "/iletisim": (context) => const Iletisim(),
       "/Degerlendirme": (context) => const Degerlendirme(),
       "/KullaniciGirisi": (context) => const KullaniciGiris(),
+      "/takvim": (context) => const Takvim(),
     }),
   );
 }

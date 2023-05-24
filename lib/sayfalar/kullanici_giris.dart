@@ -100,7 +100,7 @@ class _KullaniciGirisState extends State<KullaniciGiris> {
                             onPressed: () {
                               giris(context);
                             },
-                            child: const Text("Girişa")),
+                            child: const Text("Giriş")),
                         const SizedBox(
                           width: 20,
                         ),

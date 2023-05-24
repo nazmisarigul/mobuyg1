@@ -12,7 +12,7 @@ class _DegerlendirmeState extends State<Degerlendirme> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Ana Sayfa"),
+        title: const Text("Değerlendirme"),
         backgroundColor: const Color.fromARGB(
           255,
           71,
@@ -21,6 +21,7 @@ class _DegerlendirmeState extends State<Degerlendirme> {
         ),
       ),
       backgroundColor: const Color.fromARGB(255, 207, 206, 205),
+      body: null,
     );
   }
 }

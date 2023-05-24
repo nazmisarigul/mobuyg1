@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobuyg1/modeller/bottum_bar.dart';
 import 'package:mobuyg1/modeller/kart_model.dart';
 import 'package:mobuyg1/sayfalar/degerlendirme.dart';
 import 'package:mobuyg1/sayfalar/etkinlikler.dart';
@@ -15,7 +16,7 @@ class AnaSayfa extends StatefulWidget {
   State<AnaSayfa> createState() => _AnaSayfaState();
 }
 
-class _AnaSayfaState extends State<AnaSayfa> {
+class _AnaSayfaState extends State<AnaSayfa> with TickerProviderStateMixin {
   List<KartModel> kartlar = [
     KartModel(
       1,
@@ -123,32 +124,81 @@ class _AnaSayfaState extends State<AnaSayfa> {
     );
   }
 
+  int seciliSayfa = 0;
+
+  void sayfaDegistir(int index) {
+    seciliSayfa = index;
+    tabController.animateTo(index);
+    setState(() {});
+  }
+
+  late TabController tabController;
+  @override
+  void initState() {
+    tabController = TabController(length: 4, vsync: this);
+
+    tabController.addListener(() {
+      if (mounted && seciliSayfa != tabController.index) {
+        seciliSayfa = tabController.index;
+        setState(() {});
+      }
+    });
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Ana Sayfa"),
-          backgroundColor: const Color.fromARGB(255, 92, 53, 53),
+      appBar: AppBar(
+        title: const Text("Ana Sayfa"),
+        backgroundColor: const Color.fromARGB(255, 92, 53, 53),
+      ),
+      backgroundColor: const Color.fromARGB(255, 207, 206, 205),
+      drawer: const MyDrawer(),
+      body: TabBarView(controller: tabController, children: [
+        anaSayfa(),
+        const Center(
+          child: Text("data2"),
         ),
-        backgroundColor: const Color.fromARGB(255, 207, 206, 205),
-        drawer: const MyDrawer(),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Center(
-                  child: Wrap(
-                    spacing: 10,
-                    runSpacing: 10,
-                    children: [
-                      for (var kart in kartlar) kartWidget(kart),
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        ));
+        const Center(
+          child: Text("data3"),
+        ),
+        const Iletisim()
+      ]),
+      bottomNavigationBar: BottomBar(
+        sayfaDegistir: (sayfa) {
+          sayfaDegistir(sayfa);
+        },
+        seciliSayfa: seciliSayfa,
+      ),
+    );
+  }
+
+  SingleChildScrollView anaSayfa() {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                children: [
+                  for (var kart in kartlar) kartWidget(kart),
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
