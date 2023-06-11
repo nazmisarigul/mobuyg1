@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobuyg1/modeller/bottum_bar.dart';
+import 'package:mobuyg1/widgetler/bottum_bar.dart';
 import 'package:mobuyg1/modeller/kart_model.dart';
 import 'package:mobuyg1/sayfalar/degerlendirme.dart';
 import 'package:mobuyg1/sayfalar/etkinlikler.dart';
@@ -7,7 +7,7 @@ import 'package:mobuyg1/sayfalar/iletisim.dart';
 import 'package:mobuyg1/sayfalar/kullanici_giris.dart';
 import 'package:mobuyg1/sayfalar/sorular.dart';
 import 'package:mobuyg1/sayfalar/takvim.dart';
-import 'package:mobuyg1/modeller/drawer.dart';
+import 'package:mobuyg1/widgetler/drawer.dart';
 
 class AnaSayfa extends StatefulWidget {
   const AnaSayfa({super.key});
@@ -164,12 +164,8 @@ class _AnaSayfaState extends State<AnaSayfa> with TickerProviderStateMixin {
       drawer: const MyDrawer(),
       body: TabBarView(controller: tabController, children: [
         anaSayfa(),
-        const Center(
-          child: Text("data2"),
-        ),
-        const Center(
-          child: Text("data3"),
-        ),
+        const Degerlendirme(),
+        const KullaniciGiris(),
         const Iletisim()
       ]),
       bottomNavigationBar: BottomBar(

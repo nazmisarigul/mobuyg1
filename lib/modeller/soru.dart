@@ -1,10 +1,11 @@
 import 'dart:convert';
 
-Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
+SorularCls SorularClsFromJson(String str) =>
+    SorularCls.fromJson(json.decode(str));
 
-String welcomeToJson(Welcome data) => json.encode(data.toJson());
+String SorularClsToJson(SorularCls data) => json.encode(data.toJson());
 
-class Welcome {
+class SorularCls {
   String soru;
   String a;
   String b;
@@ -15,7 +16,7 @@ class Welcome {
   int puan;
   String ocevap;
 
-  Welcome({
+  SorularCls({
     required this.soru,
     required this.a,
     required this.b,
@@ -27,8 +28,8 @@ class Welcome {
     required this.ocevap,
   });
 
-  factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
-        soru: json["Soru"],
+  factory SorularCls.fromJson(Map<String, dynamic> json) => SorularCls(
+        soru: json["soru"],
         a: json["a"],
         b: json["b"],
         c: json["c"],
@@ -40,7 +41,7 @@ class Welcome {
       );
 
   Map<String, dynamic> toJson() => {
-        "Soru": soru,
+        "soru": soru,
         "a": a,
         "b": b,
         "c": c,
